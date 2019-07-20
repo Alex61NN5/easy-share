@@ -1,6 +1,6 @@
-# easy-share
+# Easy Share 🚀
 
-> Demo for easy-social-share-links
+> Demo for easy-social-share-links and also a good place to generate social share links.
 
 ## Build Setup
 
