@@ -4,6 +4,8 @@
 
 > Easily generate Facebook, Twitter, LinkedIn and Email links.
 
+https://easysocialsharelinks.netlify.com/
+
 ## Issues
 
 If you believe there to be an issue with this site please [submit an issue](https://github.com/Alex61NN5/easy-share/issues).
