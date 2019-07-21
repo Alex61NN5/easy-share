@@ -73,8 +73,8 @@ export default {
     },
     copyLink() {
       if (process.client) {
-        const res = document.querySelector("#result");
-        if (!this.hasCopied && res.value) {
+        if (!this.hasCopied && document.querySelector("#result").value) {
+          const res = document.querySelector("#result");
           const value = res.value;
           res.select();
           document.execCommand("copy");
