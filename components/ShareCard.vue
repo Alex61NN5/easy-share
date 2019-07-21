@@ -73,8 +73,8 @@ export default {
     },
     copyLink() {
       if (process.client) {
-        if (!this.hasCopied && document.querySelector("#result").value) {
-          const res = document.querySelector("#result");
+        const res = document.querySelector("#result");
+        if (!this.hasCopied && res.value) {
           const value = res.value;
           res.select();
           document.execCommand("copy");
@@ -83,6 +83,7 @@ export default {
             res.value = value;
           }, 1000);
           res.blur();
+          this.hasCopied = true;
         }
       }
     }
