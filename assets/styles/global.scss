@@ -27,8 +27,4 @@ p {
 
 input {
   font-family: 'Ubuntu Mono', monospace;
-
-  &[type=image]:disabled {
-    opacity: 1 !important;
-  }
 }

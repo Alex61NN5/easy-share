@@ -1,50 +1,49 @@
-
 export default {
   mode: 'universal',
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
-    title: process.env.npm_package_name || '',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+    title: 'Easy Share',
+    meta: [{
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Easily generate Facebook, Twitter, LinkedIn and Email share links'
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Merriweather|Montserrat:900|Ubuntu+Mono&display=swap' }
-    ]
+    link: [{
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css?family=Merriweather|Montserrat:900|Ubuntu+Mono&display=swap'
+    }]
   },
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
+   ** Customize the progress-bar color
+   */
+  loading: {
+    color: '#fff'
+  },
   /*
-  ** Global CSS
-  */
+   ** Global CSS
+   */
   css: [
     '~/assets/styles/global.scss',
     '~/assets/styles/_vars.scss'
   ],
   /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-  ],
-  /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
+    transpile: ['easy-social-share-links'],
     /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {}
   }
 }

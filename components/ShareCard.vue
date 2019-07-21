@@ -2,25 +2,44 @@
   <div class="share-card" :class="type">
     <div class="share-card__link-container">
       <img class="share-card__logo" :src="logo" :alt="alt" />
-      <input class="share-card__input" type="text" placeholder="// link" />
+      <input
+        @input="getLink"
+        v-model="link"
+        class="share-card__input"
+        type="text"
+        placeholder="// link"
+      />
     </div>
     <div v-if="type === 'tw' || type === 'em'" class="share-card__extra-text">
       <input
+        v-model="text"
+        @input="getLink"
         v-if="type === 'em'"
         class="share-card__input subject"
         type="text"
         placeholder="// subject"
       />
-      <textarea :placeholder="type === 'tw' ? '// message' : '// body'"></textarea>
+      <textarea v-if="type === 'em'" v-model="emailBody" @input="getLink" :placeholder="'// body'"></textarea>
+      <textarea v-if="type === 'tw'" v-model="text" @input="getLink" :placeholder="'// message'"></textarea>
     </div>
     <div class="share-card__link-container">
-      <input disabled class="code-block" placeholder="// result" />
-      <button class="share-card__test-btn">TEST</button>
+      <input
+        id="result"
+        class="code-block"
+        placeholder="// result"
+        :value="link ? result : ''"
+        @click="copyLink()"
+      />
+      <button :disabled="!result" :class="{disabled: !result}" class="share-card__test-btn">
+        <a :href="result" target="_blank">TEST</a>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import shareLink from "easy-social-share-links";
+
 export default {
   props: {
     logo: {
@@ -34,6 +53,38 @@ export default {
     type: {
       type: String,
       required: true
+    }
+  },
+  data() {
+    return {
+      emailBody: null,
+      hasCopied: false,
+      link: null,
+      result: null,
+      text: null
+    };
+  },
+  methods: {
+    getLink() {
+      this.hasCopied = false;
+      this.result = this.link
+        ? shareLink(this.type, this.link, this.text, this.emailBody)
+        : null;
+    },
+    copyLink() {
+      if (process.client) {
+        const res = document.querySelector("#result");
+        if (!this.hasCopied && res.value) {
+          const value = res.value;
+          res.select();
+          document.execCommand("copy");
+          res.value = "Copied! 🙌";
+          setTimeout(() => {
+            res.value = value;
+          }, 1000);
+          res.blur();
+        }
+      }
     }
   }
 };
@@ -123,7 +174,16 @@ export default {
     font-size: 1.3em;
     height: 50px;
     margin-left: 20px;
-    padding: 0 20px;
+    &.disabled {
+      cursor: auto;
+      opacity: 0.6;
+    }
+    & a {
+      color: white;
+      height: 50px;
+      padding: 0 20px;
+      text-decoration: none;
+    }
   }
 }
 

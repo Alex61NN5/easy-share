@@ -2,7 +2,10 @@
   <div>
     <GithubCorner />
     <div class="container">
-      <h1 class="title">Easy Share 🚀</h1>
+      <h1 class="title">
+        Easy Share
+        <br />🚀
+      </h1>
       <h2 class="subtitle">Generate Social Share Links</h2>
       <p class="intro-text">
         Made by
@@ -11,7 +14,7 @@
           class="twitter-link"
           href="https://twitter.com/alexginns"
         >Alex Ginns</a>
-        ~ with
+        <br />with
         <a
           target="_blank"
           class="npm-link"
@@ -36,6 +39,15 @@
         />
         <ShareCard :logo="require('~/assets/logos/email.svg')" :alt="'Email Logo'" :type="'em'" />
       </div>
+      <div class="footer">
+        <a href="https://nuxtjs.org/">
+          <img
+            class="built-with"
+            src="https://nuxtjs.org/logos/built-with-nuxt.svg"
+            alt="Built with Nuxt.Js"
+          />
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -54,15 +66,24 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  width: 100%;
-  padding: 0 20px;
   margin: 30px auto 30px auto;
   max-width: 650px;
+  padding: 0 20px;
+  width: 100%;
+  & br {
+    display: none;
+    @media (max-width: 450px) {
+      display: block;
+    }
+  }
 }
 
 .title {
-  text-align: center;
   font-size: 3em;
+  text-align: center;
+  @media (max-width: 500px) {
+    font-size: 2.5em;
+  }
 }
 
 .subtitle {
@@ -73,10 +94,21 @@ export default {
   text-align: center;
   margin-top: 10px;
 }
+
 .twitter-link {
   color: var(--tw);
 }
+
 .npm-link {
   color: #fb3e44;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  & .built-with {
+    width: 140px;
+  }
 }
 </style>
