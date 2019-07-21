@@ -1,4 +1,5 @@
 # Easy Share 🚀
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f4ae8127-ece4-440f-a9ad-22b392291154/deploy-status)](https://app.netlify.com/sites/easysocialsharelinks/deploys)
 
 > Demo for easy-social-share-links and also a good place to generate social share links.
 
