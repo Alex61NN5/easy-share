@@ -24,7 +24,7 @@
     </div>
     <div class="share-card__link-container">
       <input
-        id="result"
+        ref="inputResult"
         class="code-block"
         placeholder="// result"
         :value="link ? result : ''"
@@ -73,7 +73,7 @@ export default {
     },
     copyLink() {
       if (process.client) {
-        const res = document.querySelector("#result");
+        const res = this.$refs.inputResult;
         if (!this.hasCopied && res.value) {
           const value = res.value;
           res.select();
