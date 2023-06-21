@@ -13,7 +13,7 @@
 	"dependencies": {
 		"@nuxtjs/pwa": "^3.0.0-beta.19",
 		"easy-social-share-links": "^1.2.2",
-		"nuxt": "^2.0.0"
+		"nuxt": "^3.4.3"
 	},
 	"devDependencies": {
 		"node-sass": "^4.12.0",
